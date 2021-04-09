@@ -1,89 +1,114 @@
 // Copyright(c) 2021 Fredrick Allan Grott. All rights reserved. Use of this source code is governed by a BSD-style license.
 
+import 'package:base_getx/app/modules/home_page/managers/counter_controller.dart';
+import 'package:base_getx/app/shared/logger_types.dart';
+import 'package:base_getx/app/themes/my_cupertino_page_scaffold_data.dart';
+import 'package:base_getx/app/themes/my_cupertino_navigation_bar_data.dart';
+import 'package:base_getx/app/themes/my_material_app_bar_data.dart';
+import 'package:base_getx/app/themes/my_material_scaffold_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
+import 'package:get/get.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key key, this.title}) : super(key: key);
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
 
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
+class MyHomePagePlatformExp extends StatelessWidget with UiLogger {
+  final CounterController _controller = Get.put(CounterController());
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+    return PlatformScaffold(
+      material: (
+          _,
+          __,
+        ) =>
+            myMaterialScaffoldData,
+        cupertino: (
+          _,
+          __,
+        ) =>
+            myCupertinoPageScaffoldData,
+        appBar: PlatformAppBar(
+          title: PlatformText('Base StateWidget'),
+          material: (
+            _,
+            __,
+          ) =>
+              myMaterialAppBarData,
+          cupertino: (_, __) => myCupertinoNavigationBarData,
+          trailingActions: <Widget>[
+            PlatformIconButton(
+              padding: EdgeInsets.zero,
+              icon: Icon(context.platformIcons.share),
+              onPressed: () {},
             ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+        body: SafeArea(
+          // Usually a better layout plan includes both the Parent Safe Widget and
+          // a child Stack Widget as the container to hold a typical screen layout.
+          // The main thing is that we have to have a Stack Widget to properly do
+          // background images as the Stack container has to be close
+          // in parent-child relationship to the scaffold widget.
+          // Plus,the stack widget has a children attribute to allow
+          // us to add all our simulated FABs etc.
+          //
+          // A core gist fundamental is that we sue specific widgets to
+          // group like widgets than need to be positionally grouped
+          // together. i.e. column and row widgets, etc.
+          //
+          // IMHO the best layout cheatsheet is the one at:
+          // https://github.com/TakeoffAndroid/flutter-examples
+          // which was created by Chandrasekar Kuppusamy
+          child: Stack(children: <Widget>[
+            // sets the background image
+            Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("images/background.png"),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            Positioned(
+                top: 10.0,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    GetBuilder<CounterController>(
+                        builder: (controller) => PlatformText(
+                        "decrement or increment   ${controller.count}",
+                         style: const TextStyle(fontSize: 18),
+                       ),
+                    ),
+                  ],
+                )),
+            Positioned(
+                bottom: 4,
+                right: 34,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    PlatformIconButton(
+                         onPressed: () {
+                         _controller.increment();
+                         },
+                         padding: EdgeInsets.zero,
+                         icon: Icon(context.platformIcons.addCircledSolid),
+                    ),
+                    PlatformIconButton(
+                         onPressed: () {
+                         _controller.decrement();
+                         },
+                         padding: EdgeInsets.zero,
+                         icon: Icon(context.platformIcons.deleteSolid),
+                    ),
+
+                  ]
+                  ))
+          ]),
+
+        ),
     );
   }
 }

@@ -6,12 +6,14 @@ import 'dart:async';
 
 import 'package:base_getx/app/modules/app/views/my_app_platform_exp.dart';
 import 'package:base_getx/app/shared/build_modes.dart';
+import 'package:base_getx/app/shared/init_getx.dart';
 import 'package:base_getx/app/shared/init_log.dart';
 import 'package:base_getx/app/shared/log_pens.dart';
 import 'package:base_getx/app/shared/logger_types.dart';
+import 'package:base_getx/app/shared/my_system_chrome_init.dart';
 import 'package:catcher/catcher.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
 
 /// The Main function of every Dart and Flutter Application which is basically the
 /// application boot-up entry point. Future-async'd and Zone'd to make sure that
@@ -31,9 +33,8 @@ Future<void> main() async {
     // disables the systemUI display at the top of the app
     // any systemUI settings always go here at the initialize part of
     // the main function
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-    ));
+    mySystemChromeInit();
+    initGetX();
   } catch (error) {
     LogException();
   }
@@ -110,7 +111,7 @@ Future<void> main() async {
       Catcher(
           runAppFunction: () {
             runApp(
-              MyApp(),
+              MyAppPlatformExp(),
             );
           },
           debugConfig: debugOptions,

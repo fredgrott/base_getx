@@ -1,26 +1,46 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility that Flutter provides. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
+// Copyright(c) 2021 Fredrick Allan Grott. All rights reserved.
+// Use of this source code is governed by a BSD-style license.
+
+
+
+
 
 import 'package:base_getx/app/modules/app/views/my_app_platform_exp.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
+
+
 import 'package:flutter_test/flutter_test.dart';
 
 
+
 void main() {
+
+   WidgetsFlutterBinding.ensureInitialized();
+
+  // ignore: no-empty-block
+  setUpAll(() async {});
+
+
+
+  // ignore: no-empty-block
+  tearDownAll(() async {});
+
+  // ignore: no-empty-block
+  tearDown(() async{});
+
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(MyApp());
+    await tester.pumpWidget(MyAppPlatformExp());
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);
     expect(find.text('1'), findsNothing);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
+    // Tap the '+' icon and trigger a frame and do it cross platform by 
+    // searching for PlatformIconButton
+    await tester.tap(find.byWidgetPredicate((widget) => widget is PlatformIconButton));
     await tester.pump();
 
     // Verify that our counter has incremented.
