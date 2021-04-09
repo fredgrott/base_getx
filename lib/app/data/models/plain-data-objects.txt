@@ -1,0 +1,1 @@
+plain data objects as they shouldnot ever include logic that changes state!
