@@ -48,6 +48,7 @@
     "vsls-contrib.codetour",
     "vscode-icons-team.vscode-icons",
     "spacek33z.vscode-open-in-gitfork",
-    "hediet.vscode-drawio"
+    "hediet.vscode-drawio",
+    "ymotongpoo.licenser"
   ]
 }

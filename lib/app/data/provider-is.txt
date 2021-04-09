@@ -1,0 +1,1 @@
+Provider is PROVIDING ACCESS To A 3rd Party API, not what Google has term'd it.

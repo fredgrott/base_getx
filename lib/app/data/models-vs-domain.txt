@@ -1,0 +1,1 @@
+we call it model but yes its domain enities ie the models of a use case.
