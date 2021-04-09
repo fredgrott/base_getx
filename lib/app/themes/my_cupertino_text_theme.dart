@@ -31,12 +31,13 @@
 
 
 
+import 'package:base_getx/app/themes/my_cupertino_color_scheme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 CupertinoTextThemeData myCupertinoTextThemeData = CupertinoTextThemeData(
     // ignore: avoid_redundant_argument_values
-    primaryColor: CupertinoColors.systemBlue,
+    primaryColor: myCupertinoPrimaryColor,
     textStyle: myKDefaultTextStyle,
     actionTextStyle: myKDefaultActionTextStyle,
     tabLabelTextStyle: myKDefaultTabLabelTextStyle,
