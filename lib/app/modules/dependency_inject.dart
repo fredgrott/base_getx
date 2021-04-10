@@ -2,10 +2,10 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-import 'dart:ui';
 
 import 'package:base_getx/app/modules/home_page/managers/counter_controller.dart';
 import 'package:base_getx/app/modules/getx_logger.dart';
+import 'package:base_getx/app/translations/translaion_service.dart';
 import 'package:get/get.dart';
 
 /// DependencyInject where both controllers and binding and their routes are injected.
@@ -19,7 +19,7 @@ class DependencyInject {
     Get.lazyPut(() => CounterController(), fenix: true);
     // not using the GetMaterialApp way of configuring GetX so 
     // have to manually configure the specifics
-    Get.locale = const Locale('en', 'US');
+    Get.locale = TranslationService.locale;
     // this is the only settings needed as the other 
     // settings are through the FlutterPlatformWidgets system such as transitions 
     // and routes

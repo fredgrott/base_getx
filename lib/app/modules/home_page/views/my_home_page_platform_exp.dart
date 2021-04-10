@@ -77,7 +77,7 @@ class MyHomePagePlatformExp extends StatelessWidget with UiLogger {
                   children: <Widget>[
                     GetBuilder<CounterController>(
                         builder: (controller) => PlatformText(
-                        "decrement or increment   ${controller.count}",
+                        "'decrement_or_increment'.tr   ${controller.count}",
                          style: const TextStyle(fontSize: 18),
                        ),
                     ),
