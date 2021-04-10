@@ -7,12 +7,16 @@
 
 
 import 'package:base_getx/app/modules/appsplash/views/app_splash.dart';
+import 'package:base_getx/app/modules/home_page/managers/counter_controller.dart';
 import 'package:flutter/widgets.dart';
 
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:get/get.dart';
+import 'package:get_test/get_test.dart';
+
 
 
 
@@ -48,4 +52,18 @@ void main() {
     expect(find.text('0'), findsNothing);
     expect(find.text('1'), findsOneWidget);
   });
+
+  testGetX(
+    'GetX test',
+    widget: GetX<CounterController>(
+      init: CounterController(),
+      builder: (dynamic controller) {
+        return Text("'decrement_or_increment'.tr ${controller.count}");
+      },
+    ),
+    test: (dynamic e) {
+      expect(find.text("'decrement_or_increment'.tr 0"), findsOneWidget);
+      expect(e.count.value, 0);
+    },
+  );
 }
