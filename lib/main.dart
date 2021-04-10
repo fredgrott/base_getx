@@ -6,8 +6,9 @@ import 'dart:async';
 
 
 import 'package:base_getx/app/modules/appsplash/views/app_splash.dart';
+import 'package:base_getx/app/modules/dependency_inject.dart';
 import 'package:base_getx/app/shared/build_modes.dart';
-import 'package:base_getx/app/shared/init_getx.dart';
+
 import 'package:base_getx/app/shared/init_log.dart';
 import 'package:base_getx/app/shared/log_pens.dart';
 import 'package:base_getx/app/shared/logger_types.dart';
@@ -35,7 +36,7 @@ Future<void> main() async {
     // any systemUI settings always go here at the initialize part of
     // the main function
     mySystemChromeInit();
-    initGetX();
+    DependencyInject.init();
   } catch (error) {
     LogException();
   }

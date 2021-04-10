@@ -14,7 +14,7 @@ import 'package:get/get.dart';
 
 
 class MyHomePagePlatformExp extends StatelessWidget with UiLogger {
-  final CounterController _controller = Get.put(CounterController());
+  final CounterController _controller = Get.find<CounterController>();
   @override
   Widget build(BuildContext context) {
     return PlatformScaffold(
