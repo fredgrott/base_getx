@@ -5,7 +5,8 @@
 
 
 
-import 'package:base_getx/app/modules/app/views/my_app_platform_exp.dart';
+
+import 'package:base_getx/app/modules/appsplash/views/app_splash.dart';
 import 'package:flutter/widgets.dart';
 
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
@@ -32,7 +33,7 @@ void main() {
 
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(MyAppPlatformExp());
+    await tester.pumpWidget(AppSplash());
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);

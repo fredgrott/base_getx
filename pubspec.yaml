@@ -74,6 +74,7 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - images/background.png
+    - assets/2-2-tree.riv
     
 
 

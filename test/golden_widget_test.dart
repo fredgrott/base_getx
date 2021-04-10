@@ -7,7 +7,8 @@
 
 
 
-import 'package:base_getx/app/modules/app/views/my_app_platform_exp.dart';
+
+import 'package:base_getx/app/modules/appsplash/views/app_splash.dart';
 import 'package:base_getx/app/modules/home_page/views/my_home_page_platform_exp.dart';
 import 'package:flutter/widgets.dart';
 
@@ -18,8 +19,8 @@ void main() {
    WidgetsFlutterBinding.ensureInitialized();
   group('Basic Golden Tests ', () {
     testWidgets('Golden test', (WidgetTester tester) async {
-      await tester.pumpWidget(MyAppPlatformExp());
-      await expectLater(find.byType(MyAppPlatformExp), matchesGoldenFile('main.png'));
+      await tester.pumpWidget(AppSplash());
+      await expectLater(find.byType(AppSplash), matchesGoldenFile('main.png'));
     });
     testGoldens('DeviceBuilder ', (tester) async {
       final builder = DeviceBuilder()

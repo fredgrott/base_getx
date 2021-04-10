@@ -4,7 +4,8 @@
 
 import 'dart:async';
 
-import 'package:base_getx/app/modules/app/views/my_app_platform_exp.dart';
+
+import 'package:base_getx/app/modules/appsplash/views/app_splash.dart';
 import 'package:base_getx/app/shared/build_modes.dart';
 import 'package:base_getx/app/shared/init_getx.dart';
 import 'package:base_getx/app/shared/init_log.dart';
@@ -111,7 +112,7 @@ Future<void> main() async {
       Catcher(
           runAppFunction: () {
             runApp(
-              MyAppPlatformExp(),
+              AppSplash(),
             );
           },
           debugConfig: debugOptions,
