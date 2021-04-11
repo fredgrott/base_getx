@@ -35,6 +35,10 @@ import 'package:base_getx/app/themes/my_cupertino_color_scheme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// Since Md does not exist in the Apple Design universe one
+// has to set notoSans individually per Apple Design Text Styles 
+// guidelines as mirrored in the typography classes.
+
 CupertinoTextThemeData myCupertinoTextThemeData = CupertinoTextThemeData(
     // ignore: avoid_redundant_argument_values
     primaryColor: myCupertinoPrimaryColor,

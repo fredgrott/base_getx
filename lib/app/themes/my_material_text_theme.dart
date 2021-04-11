@@ -11,4 +11,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// TextTheme defines the typography styles defined in MD so this 
+// just re-assigns those styles to use NotoSans fonts
 final TextTheme myMaterialTextTheme = GoogleFonts.notoSansTextTheme();

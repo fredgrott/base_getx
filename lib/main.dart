@@ -10,6 +10,7 @@ import 'package:base_getx/app/modules/dependency_inject.dart';
 import 'package:base_getx/app/shared/build_modes.dart';
 
 import 'package:base_getx/app/shared/init_log.dart';
+import 'package:base_getx/app/shared/log_exception.dart';
 import 'package:base_getx/app/shared/log_pens.dart';
 import 'package:base_getx/app/shared/logger_types.dart';
 import 'package:base_getx/app/shared/my_system_chrome_init.dart';
@@ -38,7 +39,7 @@ Future<void> main() async {
     mySystemChromeInit();
     DependencyInject.init();
   } catch (error) {
-    LogException();
+    LogException("an error: $error");
   }
 
   // to enable sentry add this [SentryHandler(SentryClient("YOUR_DSN_HERE"))]
@@ -139,7 +140,7 @@ Future<void> main() async {
   );
 }
 
-class LogException {}
+
 
 Future<void> _reportError(dynamic error, dynamic stackTrace) async {
   logger.info(

@@ -5,8 +5,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+// In CupertinoApp Widgets we do not have ColorScheme
+// and so this is the best approximation. Define
+// Primary, PrimaryVariant, Secondary, and SecondaryVariant
+
 CupertinoDynamicColor myCupertinoPrimaryColor =
     const CupertinoDynamicColor.withBrightness(
   color: Colors.purple,
   darkColor: Colors.cyan,
 );
+
+CupertinoDynamicColor myCupertinoPrimaryContrastingColor =
+    const CupertinoDynamicColor.withBrightness(
+      color: Colors.deepPurple, 
+      darkColor: Colors.deepPurpleAccent);

@@ -12,12 +12,15 @@ MaterialAppBarData myMaterialAppBarData = MaterialAppBarData(
   // to adjust to iOS which defaults to title centered when no icons are present
   centerTitle: true,
   brightness: Brightness.light,
-  backgroundColor: const Color(0x44000000),
+  // when we want it transparent such as when using background images
+  backgroundColor: Colors.transparent,
   elevation: 0,
   
 );
 
 TextTheme myMaterialTitleTextTheme = const TextTheme(
-  headline6: TextStyle(color: Colors.black,
-                       fontWeight: FontWeight.bold  )
+  headline6: TextStyle(
+    color: Colors.black,
+    fontWeight: FontWeight.bold  
+    )
 );
